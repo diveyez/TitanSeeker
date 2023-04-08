@@ -52,29 +52,15 @@ def finance_bard():
                              moving_averages, bollinger_bands, rsi, macd)
 
     # Identify the current trend.
-    if moving_averages[-1] > moving_averages[-2]:
-        trend = "Up"
-    else:
-        trend = "Down"
-
+    trend = "Up" if moving_averages[-1] > moving_averages[-2] else "Down"
     # Identify the current volatility.
-    if bollinger_bands[-1] > bollinger_bands[-2]:
-        volatility = "High"
-    else:
-        volatility = "Low"
-
+    volatility = "High" if bollinger_bands[-1] > bollinger_bands[-2] else "Low"
     # Identify the current momentum.
-    if rsi[-1] > 50:
-        momentum = "Positive"
-    else:
-        momentum = "Negative"
-
-    # Identify the current support and resistance levels.
-    support = stock_data["Close"].min()
-    resistance = stock_data["Close"].max()
-
+    momentum = "Positive" if rsi[-1] > 50 else "Negative"
     # Return predicted price
     if trend == "Down" and volatility == "High":
-        predicted_price = moving_averages[-1] - \
-            0.2 * (resistance - moving_averages[-1])
-        return predicted_price
+        # Identify the current support and resistance levels.
+        support = stock_data["Close"].min()
+        resistance = stock_data["Close"].max()
+
+        return moving_averages[-1] - 0.2 * (resistance - moving_averages[-1])
