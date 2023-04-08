@@ -1,0 +1,9 @@
+datetime
+plotly
+matplot
+numpy
+yfinance
+finvizfinance
+bs4
+pandas
+plotting
