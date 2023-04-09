@@ -44,7 +44,7 @@ def finance_bard(stock_symbol):
     plt.legend()
 
     # Identify the current trend.
-    if moving_averages[0] > moving_averages[-2]:
+    if moving_averages[-1] > moving_averages[-2]:
         trend = "Up"
     else:
         trend = "Down"
